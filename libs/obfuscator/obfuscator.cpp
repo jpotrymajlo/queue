@@ -5,8 +5,9 @@
 namespace jp
 {
 
-Obfuscator::Obfuscator(Queue & q) :
+Obfuscator::Obfuscator(Queue & q, Encoder & e) :
     queue {q},
+    encoder {e},
     readingThread {&Obfuscator::readFromQueue, this }
 {
 }
@@ -23,9 +24,10 @@ void Obfuscator::readFromQueue(void)
     std::vector<std::string> data;
     while (run.load()){
         data = queue.pop();
-        std::cout<<data.size()<<std::endl;
         for (auto & text : data)
         {
+            encoder.encode(text);
+            std::cout<<text<<" ";
         }
     }
 }

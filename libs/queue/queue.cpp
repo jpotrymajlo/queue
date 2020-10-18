@@ -66,4 +66,9 @@ std::vector<std::string> Queue::pop()
     return result;
 }
 
+bool Queue::isEmpty()
+{
+    return head == nullptr ? true : false;
+}
+
 }

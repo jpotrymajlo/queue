@@ -33,6 +33,7 @@ public:
 
      void push(std::string s);
      std::vector<std::string> pop();
+     bool isEmpty();
 };
 
 }
