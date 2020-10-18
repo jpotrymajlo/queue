@@ -4,7 +4,7 @@
 #include "obfuscator/rot13.h"
 
 int main(int argc, char* argv[]){
-    jp::Queue queue;
+    jp::Queue<std::string> queue;
     jp::Rot13 rot13;
     jp::Obfuscator obfuscator {queue, rot13};
     jp::Input input {queue};

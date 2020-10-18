@@ -4,7 +4,7 @@
 namespace jp 
 {
 
-Input::Input(Queue & q) :
+Input::Input(Queue<std::string> & q) :
     queue {q},
     inputThread {&Input::readFromStdInput, this}
 {
@@ -25,7 +25,7 @@ void Input::readFromStdInput(void)
     {
         std::string value;
         std::cin>>value;
-        queue.push(value);
+        queue.push(std::move(value));
     }
 }
 

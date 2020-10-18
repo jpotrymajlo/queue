@@ -12,13 +12,13 @@ namespace jp
 class Obfuscator
 {
 private:
-    Queue & queue;
+    Queue<std::string> & queue;
     Encoder & encoder;
     std::thread readingThread;
     void readFromQueue();
     std::atomic<bool> run;
 public:
-    Obfuscator(Queue &, Encoder &);
+    Obfuscator(Queue<std::string> &, Encoder &);
     virtual ~Obfuscator();
 };
 

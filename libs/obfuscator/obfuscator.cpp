@@ -5,7 +5,7 @@
 namespace jp
 {
 
-Obfuscator::Obfuscator(Queue & q, Encoder & e) :
+Obfuscator::Obfuscator(Queue<std::string> & q, Encoder & e) :
     queue {q},
     encoder {e},
     readingThread {&Obfuscator::readFromQueue, this }

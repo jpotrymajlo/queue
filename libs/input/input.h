@@ -11,11 +11,11 @@ namespace jp
 class Input 
 {
 private:
-    Queue & queue;
+    Queue<std::string> & queue;
     std::thread inputThread;
     void readFromStdInput();
 public:
-    Input(Queue&);
+    Input(Queue<std::string> &);
     virtual ~Input();
     void waitUntilFinished();
 
