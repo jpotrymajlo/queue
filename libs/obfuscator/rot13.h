@@ -4,7 +4,10 @@
 #include "encoder.h"
 namespace jp 
 {
-
+/* ROT-13 algorythm. 
+ * alphanumeric characters are shifted by 13
+ * non alphanumeric stays the same
+ */
 class Rot13 : public Encoder
 {
 public:
