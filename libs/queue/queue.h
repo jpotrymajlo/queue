@@ -14,19 +14,19 @@ template<typename T>
 class Queue 
 {
     template<typename U>
-    struct node 
+    struct Node 
     {
-        std::unique_ptr<node<U>> next;
+        std::unique_ptr<Node<U>> next;
         U value;
-        node(U && s) :
+        Node(U && s) :
             value {std::forward<U>(s)},
             next {nullptr}
         {
         }
     };
 private:
-    std::unique_ptr<node<T>> head;
-    node<T>* tail;
+    std::unique_ptr<Node<T>> head;
+    Node<T>* tail;
     std::condition_variable dataInQueue;
     std::mutex queueMutex;
 
@@ -56,7 +56,7 @@ template<typename T>
 void Queue<T>::push(T && s)
 {
     std::unique_lock<std::mutex> pushLock (queueMutex);
-    auto tmp = std::make_unique<node<T>>(std::forward<T>(s));
+    auto tmp = std::make_unique<Node<T>>(std::forward<T>(s));
 
     if (tmp != nullptr){
         if (head == nullptr)
