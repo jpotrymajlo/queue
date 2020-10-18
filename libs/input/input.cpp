@@ -13,7 +13,10 @@ Input::Input(Queue & q) :
 
 Input::~Input()
 {
-    inputThread.join();
+    if (inputThread.joinable())
+    {
+        inputThread.join();
+    }
 }
 
 void Input::readFromStdInput(void)
@@ -23,6 +26,14 @@ void Input::readFromStdInput(void)
         std::string value;
         std::cin>>value;
         queue.push(value);
+    }
+}
+
+void Input::waitUntilFinished()
+{
+    if (inputThread.joinable())
+    {
+        inputThread.join();
     }
 }
 

@@ -22,7 +22,7 @@ void Obfuscator::readFromQueue(void)
 {
     run.store(true);
     std::vector<std::string> data;
-    while (run.load()){
+    while (run.load() || !queue.isEmpty()){
         data = queue.pop();
         for (auto & text : data)
         {

@@ -14,10 +14,10 @@ private:
     Queue & queue;
     std::thread inputThread;
     void readFromStdInput();
-
 public:
     Input(Queue&);
     virtual ~Input();
+    void waitUntilFinished();
 
 
 };

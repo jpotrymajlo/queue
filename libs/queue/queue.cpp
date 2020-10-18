@@ -1,6 +1,5 @@
 #include <chrono>
 #include "queue.h"
-#include <iostream>
 
 
 namespace jp {
@@ -68,6 +67,7 @@ std::vector<std::string> Queue::pop()
 
 bool Queue::isEmpty()
 {
+    std::unique_lock<std::mutex> queueLock (queueMutex);
     return head == nullptr ? true : false;
 }
 
